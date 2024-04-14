@@ -115,3 +115,10 @@ sys_get_children(void)
 	int n = myproc()->pid;
 	return get_children(n);
 }
+
+int
+sys_get_descendants(void)
+{
+	int n = myproc()->pid;
+	return get_descendants(n);
+}

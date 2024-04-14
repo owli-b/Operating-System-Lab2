@@ -123,6 +123,7 @@ void            yield(void);
 int             count_num_of_digits(int n);
 int             get_parent_id(void);
 int             get_children(int curr_pid);
+int             get_descendants(int curr_pid);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

@@ -549,3 +549,30 @@ int get_children(int curr_pid){
 	}
 	return children;
 }
+
+int get_descendants(int curr_pid){
+	struct proc* p;
+	int descendants = 0;
+	int temp = 0;
+	for(p = ptable.proc; p<&ptable.proc[NPROC]; p++){
+		if(p->parent->pid == curr_pid){
+			int h = p->pid;
+			int count1 = 1;
+			while(h != 0){
+				count1 = count1 * 10;
+				h = h / 10;
+			}
+			descendants = descendants * count1 + p->pid;
+			temp = get_descendants(p->pid);
+			int count2 = 1;
+			int u = temp;
+			while(u != 0){
+				count2 = count2 * 10;
+				u = u / 10;
+			}
+			descendants = descendants * count2 + temp;
+		}
+		
+	}
+	return descendants;
+}
