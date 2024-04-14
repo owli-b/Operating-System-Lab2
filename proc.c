@@ -7,6 +7,7 @@
 #include "proc.h"
 #include "spinlock.h"
 
+
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
@@ -531,4 +532,20 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+int get_parent_id(){
+	struct proc* curr_proc = myproc();
+	return curr_proc->parent->pid;
+}
+
+int get_children(int curr_pid){
+	struct proc* p;
+	int children = 0;
+	for(p = ptable.proc; p<&ptable.proc[NPROC]; p++){
+		if(p->parent->pid == curr_pid){
+			children = children * (10) + p->pid;
+		}
+	}
+	return children;
 }

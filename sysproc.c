@@ -102,3 +102,16 @@ sys_count_num_of_digits(void)
 	}
 	return count;
 }
+
+int 
+sys_get_parent_id(void)
+{
+	return get_parent_id();
+}
+
+int
+sys_get_children(void)
+{
+	int n = myproc()->pid;
+	return get_children(n);
+}
