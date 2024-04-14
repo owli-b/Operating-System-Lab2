@@ -93,13 +93,11 @@ sys_uptime(void)
 int
 sys_count_num_of_digits(void)
 {
-	int n;
-    if(argint(0, &n) < 0)
-        return -1;
+	int n = myproc()->tf->ebx;
 	int count = 0;
 	if(n==0) return 1;
 	while(n != 0){
-		count++;
+		count = count + 1;
 		n = n / 10;
 	}
 	return count;

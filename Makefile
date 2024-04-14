@@ -182,6 +182,7 @@ UPROGS=\
 	_wc\
 	_zombie\
 	_sdvar\
+	_test_num_digit\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
